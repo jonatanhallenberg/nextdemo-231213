@@ -13,4 +13,4 @@ const buttonVariants = {
 
 export const Button = ({ children, variant }: ButtonType) => {
     return <button type="button" className={buttonVariants[variant]}>{children}</button>
-}   
+}
