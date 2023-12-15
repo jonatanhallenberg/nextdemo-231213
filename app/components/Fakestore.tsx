@@ -1,22 +1,13 @@
 import { useEffect, useState } from "react";
 import { Product, getProducts } from "../api/fakestore/getProducts";
 import { CategoryValues, getProductsByCategory } from "../api/fakestore/getProductByCategory";
+import { useFetch } from "../hooks/useFetch";
 
 export const Fakestore = () => {
 
-    const [products, setProducts] = useState<Product[]>([]);
     const [selectedCategory, setSelectedCategory] = useState<CategoryValues>("electronics");
 
-    useEffect(() => {
-
-        const loadProducts = async () => {
-            const products = await getProductsByCategory(selectedCategory);
-            setProducts(products);
-        }
-
-        loadProducts();
-
-    }, [selectedCategory])
+    const { data, loading, error } = useFetch<Product[]>(() => getProductsByCategory(selectedCategory), [selectedCategory]);
 
     return <div>
         <div>
@@ -25,6 +16,7 @@ export const Fakestore = () => {
             <button onClick={() => setSelectedCategory("men's clothing")}>Men´s clothing</button>
         </div>
 
-        Produkter i kategorin: <ul>{products.map(product => <li key={product.id}>{product.title}</li>)}</ul>
+        {error && <span className="text-red-600">Något gick fel</span>}
+        {!error && (loading ? <span>Loading...</span> : <>Produkter i kategorin: <ul>{data && data.map(product => <li key={product.id}>{product.title}</li>)}</ul></>)}
     </div >
 }

@@ -7,6 +7,7 @@ import { Timer } from "../components/Timer";
 import { Fakestore } from "../components/Fakestore";
 import { ThemeContext } from '../context/ThemeContext';
 import { ThemeContextProvider } from "../context/ThemeContextProvider";
+import { UseCounterDemo } from "../components/UseCounterDemo";
 
 const ClientDemo = () => {
 
@@ -15,13 +16,14 @@ const ClientDemo = () => {
     return (
         <ThemeContextProvider>
             <div className="flex flex-row">
+                {/* <UseCounterDemo /> */}
                 {/* <div>
                     <Counter numberOfTodos={todos.length} />
                 </div>
                 <div>
                     <TodoList todos={todos} setTodos={setTodos} />
-                </div>
-                <Timer /> */}
+                </div> */}
+                {/* <Timer /> */}
                 <Fakestore />
             </div>
         </ThemeContextProvider>

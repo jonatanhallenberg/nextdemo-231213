@@ -15,6 +15,9 @@ export type CategoryValues = "electronics" | "jewelery" | "men's clothing" | "wo
 
 export const getProductsByCategory = async (category: CategoryValues): Promise<Product[]> => {
     const response = await fetch(`${process.env.NEXT_PUBLIC_FAKESTORE_BASE_URL}/products/category/${category}`);
+    if (!response.ok) {
+        throw "Response not ok: " + response.status
+    }
     const data = await response.json()
     return data as Product[];
 }
