@@ -1,11 +1,10 @@
 "use client"
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
+import { ThemeContext } from '../context/ThemeContext';
 
 export const Counter = ({ numberOfTodos }) => {
 
-    console.log('counter is rendered');
-
-
+    const { mode } = useContext(ThemeContext);
 
     const [newName, setNewName] = useState("Ford");
 
@@ -45,5 +44,6 @@ export const Counter = ({ numberOfTodos }) => {
         <button onClick={() => removeCarById(1)}>Ta bort Volvo</button>
 
         <p>Number of todos: {numberOfTodos}</p>
+        <p>Theme mode: {mode}</p>
     </>
 }
