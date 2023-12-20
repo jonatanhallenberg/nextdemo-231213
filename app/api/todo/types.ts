@@ -7,10 +7,4 @@ export const TodoSchema = z.object({
     createdAt: z.coerce.date()
 })
 
-export type Todo = {
-    createdAt?: Date,
-    title: string,
-    description: string,
-    id?: string
-}
-
+export type Todo = z.infer<typeof TodoSchema>;

@@ -2,7 +2,7 @@ import Link from "next/link";
 import { getTodos } from "../api/todo/getTodos"
 
 const TodoPage = async () => {
-
+    throw new Error("Todo kunde inte laddas")
     const todos = await getTodos();
 
     return <>
