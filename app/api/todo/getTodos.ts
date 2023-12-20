@@ -1,9 +1,4 @@
-type Todo = {
-    createdAt: Date,
-    title: string,
-    description: string,
-    id: string
-}
+import { Todo } from "./types";
 
 export const getTodos = async (): Promise<Todo[]> => {
 
