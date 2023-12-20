@@ -1,18 +1,14 @@
 "use client"
 
 import { useFormState } from "react-dom";
-import { authenticate, State } from "../lib/signInAction";
-
-const initialState: State = {
-    errors: {},
-    message: null
-}
+import { authenticate } from "../lib/signInAction";
 
 const LoginPage = () => {
 
-    const [errorMessage, dispatch] = useFormState(authenticate, initialState);
+    const [errorMessage, dispatch] = useFormState(authenticate, "");
 
     return <form action={dispatch}>
+        {errorMessage && <div>{errorMessage}</div>}
         <div>
             <label htmlFor="email">E-mail</label>
             <input type="text" name="email"></input>

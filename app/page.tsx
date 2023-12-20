@@ -1,4 +1,5 @@
 import Menu from "./components/Menu";
+import { signOut } from "@/auth";
 
 const Index = () => (
   <main>
@@ -17,6 +18,15 @@ const Index = () => (
         <Menu.Item icon="" title="VADSMÅ" />
       </Menu.Section>
     </Menu>
+    <form
+      action={async () => {
+        "use server";
+        await signOut()
+      }}>
+        <button type="submit">Logga ut</button>
+    </form>
+
+      
   </main>
 )
 
